@@ -8,18 +8,20 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     let emailFld = UITextField()
     let passFld = UITextField()
     let loginBtn = UIButton()
     let separator = UIView()
-    let googleBtn = UIButton()
+    let googleBtn = GIDSignInButton()
     let createAccountBtn = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        // Do any additional setup after loading the view, typically from a nib.
+        //GIDSignIn.sharedInstance().signIn()
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
     
@@ -74,11 +76,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         let btnWidth = CGFloat(170)
         googleBtn.frame = CGRect(x: (viewSize.width - btnWidth) / 2, y: separator.frame.maxY + 20, width: btnWidth, height: 40)
-        googleBtn.setImage(UIImage(named: "SignInWithGoogle"), for: .normal)
+        //googleBtn.setImage(UIImage(named: "SignInWithGoogle"), for: .normal)
+        /*
         if let imgView = googleBtn.imageView {
             imgView.layer.cornerRadius = 4
         }
-        googleBtn.subviews.first?.contentMode = .scaleAspectFit
+ */
+        //googleBtn.subviews.first?.contentMode = .scaleAspectFit
         googleBtn.backgroundColor = UIColor.white
         googleBtn.layer.cornerRadius = 4
         googleBtn.addTarget(self, action: #selector(googleSignInPressed(sender:)), for: .touchUpInside)
@@ -144,7 +148,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func googleSignInPressed(sender:UIButton) {
+        //GIDSignIn.sharedInstance().signIn()
         sender.backgroundColor = sender.backgroundColor?.lighter(by: 22)
+        print("Google pressed")
     }
     
     @objc func createAccountPressed(sender:UIButton) {
@@ -163,6 +169,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if textField.tag == 1 && textField.text == nil {
             textField.placeholder = "Password"
         }
+    }
+    
+    // google sign in delegate functions
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        print("\n\n\nsigning in\n\n\n\n\n")
+        if let error = error {
+            print("Google sign in error: \n\(error)")
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        /*
+        FIRAuth.auth()?.signIn(with: credential, completion: { (result, error) in
+            if let error = error {
+                print(error)
+            } else {
+                print("Successfully signed in")
+                self.loadUser()
+                print("UID: " + FIRAuth.auth()!.currentUser!.uid)
+            }
+        })
+         */
     }
 }
 

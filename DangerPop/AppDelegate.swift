@@ -8,9 +8,10 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
@@ -19,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FIRApp.configure()
         
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance()?.disconnect()
         return true
     }
 
@@ -44,6 +48,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
+        -> Bool {
+            return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as?String,annotation: [:])
+    }
 
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        if let error = error {
+            print("Delegate google signing in error: \n\(error)")
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        FIRAuth.auth()?.signIn(with: credential, completion: { (result, error) in
+            if let error = error {
+                print(error)
+            } else {
+                print("Successfully signed in")
+                self.loadUser()
+                print("UID: " + FIRAuth.auth()!.currentUser!.uid)
+            }
+        })    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+        if let error = error {
+            print("Delegate google signing out error: \n\(error)")
+        }
+    }
+    
+    // convenience function
+    private func loadUser() {
+        if let uid = FIRAuth.auth()?.currentUser?.uid {
+            let ref = FIRDatabase.database().reference(withPath: "Users/\(uid)")
+            ref.observeSingleEvent(of: .value) { (snapshot) in
+                if snapshot.exists() {
+                    UserData.uid = uid
+                    UserData.update(with: snapshot)
+                } else {
+                    //self.presentAlert(alert: "This account doesn't exist", message: "Please contact support at support@savetheirsouls.org")
+                }
+            }
+        }
+    }
 }
 
