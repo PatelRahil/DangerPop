@@ -20,13 +20,32 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="TWs-ss-VNZ" kind="show" identifier="MapSegue" id="fMC-Yb-533"/>
                         <segue destination="EdV-SK-cYV" kind="show" identifier="CreateAccountSegue" id="xf8-aq-DTT"/>
+                        <segue destination="Rnx-XT-MPC" kind="show" identifier="MapSegue" id="w9J-ix-1Jo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49" y="105"/>
+            <point key="canvasLocation" x="-929" y="105"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="oz6-OP-1sX">
+            <objects>
+                <viewController id="Rnx-XT-MPC" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3t7-WN-zcb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6Wc-D7-kb1"/>
+                    </view>
+                    <connections>
+                        <segue destination="TWs-ss-VNZ" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="JaI-ds-V58"/>
+                        <segue destination="bOr-a3-b66" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="X8c-HP-zjO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FvG-4L-VEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="298" y="105"/>
         </scene>
         <!--Create AccountVC-->
         <scene sceneID="SQw-FM-nci">
@@ -38,10 +57,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cQQ-d6-Zsx"/>
                     </view>
+                    <connections>
+                        <segue destination="Rnx-XT-MPC" kind="show" id="1R3-qw-8xB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayu-AF-v2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1170" y="-630"/>
+            <point key="canvasLocation" x="297" y="-646"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="rlH-Bi-mEQ">
@@ -54,13 +76,12 @@
                         <viewLayoutGuide key="safeArea" id="2dn-Wp-r5t"/>
                     </view>
                     <connections>
-                        <segue destination="Taj-zW-90n" kind="show" identifier="ReportSegue" id="Apj-dF-Fg9"/>
-                        <segue destination="2RC-PY-Lt2" kind="show" identifier="ProfileSegue" id="mNg-yQ-P6Y"/>
+                        <segue destination="Taj-zW-90n" kind="show" identifier="ReportSegue" id="eYr-3T-t8q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9Q-va-R7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1170" y="105"/>
+            <point key="canvasLocation" x="1561" y="105"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="sDS-KW-P2W">
@@ -75,7 +96,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwf-UK-0vy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2345" y="627"/>
+            <point key="canvasLocation" x="2766" y="-1314"/>
+        </scene>
+        <!--Slide TableVC-->
+        <scene sceneID="ePk-gK-gdd">
+            <objects>
+                <tableViewController id="bOr-a3-b66" customClass="SlideTableVC" customModule="DangerPop" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="P4U-Zx-lSe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicTemplate" id="etO-Jg-FPI" customClass="customTableViewCell" customModule="DangerPop" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="etO-Jg-FPI" id="gsI-Eb-oiy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="2RC-PY-Lt2" kind="custom" identifier="ProfileSegue" trigger="accessoryAction" customClass="SWRevealViewControllerSeguePushController" id="HYr-Zs-7k5"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleTemplate" id="peq-cA-7Fa" customClass="customTitleTableViewCell" customModule="DangerPop" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="peq-cA-7Fa" id="86v-xf-4SL">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapCell" id="ucx-AF-w7r" customClass="customTableViewCell" customModule="DangerPop" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ucx-AF-w7r" id="bu6-R7-mfx">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Rnx-XT-MPC" kind="custom" identifier="BackToMapSegue" trigger="accessoryAction" customClass="SWRevealViewControllerSeguePushController" id="gwN-83-ssn"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bOr-a3-b66" id="ZN5-Yq-qoA"/>
+                            <outlet property="delegate" destination="bOr-a3-b66" id="Xfp-Zc-7t3"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="slideTableView" destination="P4U-Zx-lSe" id="F2h-IL-39Z"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8oc-oH-xle" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1561" y="-646"/>
         </scene>
         <!--ReportVC-->
         <scene sceneID="iYN-61-OWB">
@@ -90,7 +164,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QsB-dC-eVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2345" y="-262"/>
+            <point key="canvasLocation" x="2482" y="105"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gwN-83-ssn"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -29,13 +29,33 @@ class MapVC: UIViewController {
         }
         layoutUI(viewSize: viewSize)
         
+        //removes a default gesture recognizer blocker from the mapview so that other ui elements can be interacted with
+        for gesture in mapView.gestureRecognizers! {
+            mapView.removeGestureRecognizer(gesture)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if CLLocationManager.locationServicesEnabled() {
+            // 4
+            locMan.startUpdatingLocation()
+            //5
+            
+            mapView.isMyLocationEnabled = true
+            mapView.settings.myLocationButton = true
+            view = mapView
+        }
+        
     }
     
     private func layoutUI(viewSize: CGSize) {
         let size = viewSize
         print("\n\n\n + \(size) + \n\n\n")
+        self.revealViewController()?.rearViewRevealWidth = 280
         slideMenu.setImage(UIImage(named: "SlideMenuIcon"), for: .normal)
         slideMenu.frame = CGRect(x: 10, y: 40, width: size.width / 12, height: size.width / 12)
+        slideMenu.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         view.addSubview(slideMenu)
     }
 }

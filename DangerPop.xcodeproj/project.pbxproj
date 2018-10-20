@@ -35,6 +35,9 @@
 		5ADB8241217BD6350094E4B8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8240217BD6350094E4B8 /* SWRevealViewController.m */; };
 		5ADB8242217BD6350094E4B8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8240217BD6350094E4B8 /* SWRevealViewController.m */; };
 		5ADB8243217BD6350094E4B8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8240217BD6350094E4B8 /* SWRevealViewController.m */; };
+		5ADB8245217BD8140094E4B8 /* SlideTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8244217BD8140094E4B8 /* SlideTableVC.swift */; };
+		5ADB8246217BD8140094E4B8 /* SlideTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8244217BD8140094E4B8 /* SlideTableVC.swift */; };
+		5ADB8247217BD8140094E4B8 /* SlideTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8244217BD8140094E4B8 /* SlideTableVC.swift */; };
 		7EDB36184DC1339253C652F8 /* Pods_DangerPop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8342E919C3922104B40F9BEB /* Pods_DangerPop.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +88,7 @@
 		5ADB823E217BD6320094E4B8 /* DangerPopUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DangerPopUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5ADB823F217BD6340094E4B8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		5ADB8240217BD6350094E4B8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		5ADB8244217BD8140094E4B8 /* SlideTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideTableVC.swift; sourceTree = "<group>"; };
 		8342E919C3922104B40F9BEB /* Pods_DangerPop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DangerPop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7CC69D551064E17F7056D66 /* Pods-DangerPopUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DangerPopUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DangerPopUITests/Pods-DangerPopUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C3F60F77A623CF1FFA27787F /* Pods-DangerPop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DangerPop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DangerPop/Pods-DangerPop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				5ADB81E4217ADE7D0094E4B8 /* AppDelegate.swift */,
 				5ADB81E6217ADE7D0094E4B8 /* ViewController.swift */,
 				5ADB8232217B9C760094E4B8 /* MapVC.swift */,
+				5ADB8244217BD8140094E4B8 /* SlideTableVC.swift */,
 				5ADB8234217B9C8C0094E4B8 /* ReportVC.swift */,
 				5ADB8236217B9C940094E4B8 /* ProfileVC.swift */,
 				5ADB822A217B4F0F0094E4B8 /* UserData.swift */,
@@ -471,6 +476,7 @@
 				5ADB8235217B9C8C0094E4B8 /* ReportVC.swift in Sources */,
 				5ADB81E7217ADE7D0094E4B8 /* ViewController.swift in Sources */,
 				5ADB8233217B9C760094E4B8 /* MapVC.swift in Sources */,
+				5ADB8245217BD8140094E4B8 /* SlideTableVC.swift in Sources */,
 				5ADB8227217B0DB80094E4B8 /* Colors.swift in Sources */,
 				5ADB8237217B9C940094E4B8 /* ProfileVC.swift in Sources */,
 				5ADB8241217BD6350094E4B8 /* SWRevealViewController.m in Sources */,
@@ -485,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ADB822C217B4F0F0094E4B8 /* UserData.swift in Sources */,
+				5ADB8246217BD8140094E4B8 /* SlideTableVC.swift in Sources */,
 				5ADB81FA217ADE800094E4B8 /* DangerPopTests.swift in Sources */,
 				5ADB8242217BD6350094E4B8 /* SWRevealViewController.m in Sources */,
 				5ADB8230217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */,
@@ -497,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ADB822D217B4F0F0094E4B8 /* UserData.swift in Sources */,
+				5ADB8247217BD8140094E4B8 /* SlideTableVC.swift in Sources */,
 				5ADB8205217ADE800094E4B8 /* DangerPopUITests.swift in Sources */,
 				5ADB8243217BD6350094E4B8 /* SWRevealViewController.m in Sources */,
 				5ADB8231217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */,
@@ -662,6 +670,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TY9FL99MB7;
 				INFOPLIST_FILE = DangerPop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -683,6 +692,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TY9FL99MB7;
 				INFOPLIST_FILE = DangerPop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
