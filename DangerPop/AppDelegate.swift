@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.disconnect()
+        configureAPIs()
         return true
     }
 
@@ -64,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             return
         }
         
+        /*
         guard let authentication = user.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
@@ -73,9 +76,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             } else {
                 print("Successfully signed in")
                 self.loadUser()
+                UserData.name = user.profile.name
                 print("UID: " + FIRAuth.auth()!.currentUser!.uid)
             }
-        })    }
+            
+        })
+         */
+    }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
@@ -98,6 +105,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 }
             }
         }
+    }
+    
+    private func configureAPIs() {
+        let url = Bundle.main.url(forResource: "keys", withExtension: "json")
+        var data = Data()
+        var keys = [String:String]()
+        do { data = try Data(contentsOf: url!) }
+        catch let error { print("File Error: \(error)") }
+        do { keys = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:String]}
+        catch let error { print("JSON Error: \(error)") }
+        
+        let googleAPIKey = keys["google"]!
+        
+        GMSServices.provideAPIKey(googleAPIKey)
     }
 }
 

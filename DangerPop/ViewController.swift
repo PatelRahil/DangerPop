@@ -22,6 +22,7 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate
         setupUI()
         //GIDSignIn.sharedInstance().signIn()
         GIDSignIn.sharedInstance().uiDelegate = self
+        //GIDSignIn.sharedInstance()?.signInSilently()
     }
     
     
@@ -112,6 +113,7 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate
     
     private func loadUser() {
         if let uid = FIRAuth.auth()?.currentUser?.uid {
+            print("\n\n\n\(uid)\n\n\n")
             let ref = FIRDatabase.database().reference(withPath: "Users/\(uid)")
             ref.observeSingleEvent(of: .value) { (snapshot) in
                 if snapshot.exists() {
@@ -121,6 +123,16 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate
                     self.presentAlert(alert: "This account doesn't exist", message: "Please contact support at support@savetheirsouls.org")
                 }
             }
+        } else {
+            print("\n\n\nNo uid\n\n\n")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? CreateAccountVC {
+            // pass data to CreateAccountVC here
+        } else if let dest = segue.destination as? MapVC {
+            // pass data to MapVC here
         }
     }
     
@@ -137,6 +149,7 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate
                 if error == nil {
                     //Valid Email and Password
                     self.loadUser()
+                    self.performSegue(withIdentifier: "MapSegue", sender: sender)
                 } else {
                     print(error!.localizedDescription)
                     self.presentAlert(alert: "Invalid Login Credentials", message: "")
@@ -151,10 +164,12 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate
         //GIDSignIn.sharedInstance().signIn()
         sender.backgroundColor = sender.backgroundColor?.lighter(by: 22)
         print("Google pressed")
+        
     }
     
     @objc func createAccountPressed(sender:UIButton) {
         sender.backgroundColor = sender.backgroundColor?.lighter(by: 22)
+        performSegue(withIdentifier: "CreateAccountSegue", sender: sender)
     }
     
     // textfield delegate functions
@@ -172,27 +187,45 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate
     }
     
     // google sign in delegate functions
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        print("\n\n\nsigning in\n\n\n\n\n")
+    func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
+        print("\n\n\nDISPATCHING\n\n\n")
         if let error = error {
-            print("Google sign in error: \n\(error)")
-            return
+            print(error)
         }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        /*
-        FIRAuth.auth()?.signIn(with: credential, completion: { (result, error) in
-            if let error = error {
-                print(error)
-            } else {
-                print("Successfully signed in")
-                self.loadUser()
-                print("UID: " + FIRAuth.auth()!.currentUser!.uid)
-            }
-        })
-         */
+        else {
+            print("Signed in successfully")
+            //performSegue(withIdentifier: "MapSegue", sender: nil)
+        }
+    }
+    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+        print("\n\n\nPRESENTING\n\n\n")
+        present(viewController, animated: true) {
+            
+        }
+    }
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+        print("\n\n\nDISMISSING\n\n\n")
+        dismiss(animated: true) {
+            guard let user = signIn.currentUser else { return }
+            guard let authentication = user.authentication else { return }
+            let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                              accessToken: authentication.accessToken)
+            
+            FIRAuth.auth()?.signIn(with: credential, completion: { (result, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("Successfully signed in")
+                    UserData.name = user.profile.name
+                    guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+                    UserData.uid = uid
+                    UserData.upload()
+                    print("UID: " + FIRAuth.auth()!.currentUser!.uid)
+                    self.performSegue(withIdentifier: "MapSegue", sender: nil)
+                }
+                
+            })
+        }
     }
 }
 

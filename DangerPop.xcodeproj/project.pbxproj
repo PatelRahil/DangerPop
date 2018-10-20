@@ -28,6 +28,13 @@
 		5ADB822F217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB822E217B58ED0094E4B8 /* CreateAccountVC.swift */; };
 		5ADB8230217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB822E217B58ED0094E4B8 /* CreateAccountVC.swift */; };
 		5ADB8231217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB822E217B58ED0094E4B8 /* CreateAccountVC.swift */; };
+		5ADB8233217B9C760094E4B8 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8232217B9C760094E4B8 /* MapVC.swift */; };
+		5ADB8235217B9C8C0094E4B8 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8234217B9C8C0094E4B8 /* ReportVC.swift */; };
+		5ADB8237217B9C940094E4B8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8236217B9C940094E4B8 /* ProfileVC.swift */; };
+		5ADB823B217BCB9E0094E4B8 /* keys.json in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB823A217BCB9D0094E4B8 /* keys.json */; };
+		5ADB8241217BD6350094E4B8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8240217BD6350094E4B8 /* SWRevealViewController.m */; };
+		5ADB8242217BD6350094E4B8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8240217BD6350094E4B8 /* SWRevealViewController.m */; };
+		5ADB8243217BD6350094E4B8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8240217BD6350094E4B8 /* SWRevealViewController.m */; };
 		7EDB36184DC1339253C652F8 /* Pods_DangerPop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8342E919C3922104B40F9BEB /* Pods_DangerPop.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +76,15 @@
 		5ADB8226217B0DB80094E4B8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5ADB822A217B4F0F0094E4B8 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		5ADB822E217B58ED0094E4B8 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
+		5ADB8232217B9C760094E4B8 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		5ADB8234217B9C8C0094E4B8 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
+		5ADB8236217B9C940094E4B8 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		5ADB823A217BCB9D0094E4B8 /* keys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = keys.json; path = DangerPop/keys.json; sourceTree = "<group>"; };
+		5ADB823C217BD6310094E4B8 /* DangerPop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DangerPop-Bridging-Header.h"; sourceTree = "<group>"; };
+		5ADB823D217BD6310094E4B8 /* DangerPopTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DangerPopTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		5ADB823E217BD6320094E4B8 /* DangerPopUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DangerPopUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		5ADB823F217BD6340094E4B8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		5ADB8240217BD6350094E4B8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		8342E919C3922104B40F9BEB /* Pods_DangerPop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DangerPop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7CC69D551064E17F7056D66 /* Pods-DangerPopUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DangerPopUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DangerPopUITests/Pods-DangerPopUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C3F60F77A623CF1FFA27787F /* Pods-DangerPop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DangerPop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DangerPop/Pods-DangerPop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +137,7 @@
 		5ADB81D8217ADE7D0094E4B8 = {
 			isa = PBXGroup;
 			children = (
+				5ADB823A217BCB9D0094E4B8 /* keys.json */,
 				5ADB81E3217ADE7D0094E4B8 /* DangerPop */,
 				5ADB81F8217ADE800094E4B8 /* DangerPopTests */,
 				5ADB8203217ADE800094E4B8 /* DangerPopUITests */,
@@ -145,14 +162,22 @@
 			children = (
 				5ADB81E4217ADE7D0094E4B8 /* AppDelegate.swift */,
 				5ADB81E6217ADE7D0094E4B8 /* ViewController.swift */,
+				5ADB8232217B9C760094E4B8 /* MapVC.swift */,
+				5ADB8234217B9C8C0094E4B8 /* ReportVC.swift */,
+				5ADB8236217B9C940094E4B8 /* ProfileVC.swift */,
 				5ADB822A217B4F0F0094E4B8 /* UserData.swift */,
 				5ADB822E217B58ED0094E4B8 /* CreateAccountVC.swift */,
 				5ADB8226217B0DB80094E4B8 /* Colors.swift */,
+				5ADB823F217BD6340094E4B8 /* SWRevealViewController.h */,
+				5ADB8240217BD6350094E4B8 /* SWRevealViewController.m */,
 				5ADB81E8217ADE7D0094E4B8 /* Main.storyboard */,
 				5ADB81EB217ADE800094E4B8 /* Assets.xcassets */,
 				5ADB81ED217ADE800094E4B8 /* LaunchScreen.storyboard */,
 				5ADB8222217B004C0094E4B8 /* GoogleService-Info.plist */,
 				5ADB81F0217ADE800094E4B8 /* Info.plist */,
+				5ADB823C217BD6310094E4B8 /* DangerPop-Bridging-Header.h */,
+				5ADB823D217BD6310094E4B8 /* DangerPopTests-Bridging-Header.h */,
+				5ADB823E217BD6320094E4B8 /* DangerPopUITests-Bridging-Header.h */,
 			);
 			path = DangerPop;
 			sourceTree = "<group>";
@@ -258,13 +283,16 @@
 				TargetAttributes = {
 					5ADB81E0217ADE7D0094E4B8 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					5ADB81F4217ADE800094E4B8 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 						TestTargetID = 5ADB81E0217ADE7D0094E4B8;
 					};
 					5ADB81FF217ADE800094E4B8 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 						TestTargetID = 5ADB81E0217ADE7D0094E4B8;
 					};
 				};
@@ -295,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ADB81EF217ADE800094E4B8 /* LaunchScreen.storyboard in Resources */,
+				5ADB823B217BCB9E0094E4B8 /* keys.json in Resources */,
 				5ADB8223217B004C0094E4B8 /* GoogleService-Info.plist in Resources */,
 				5ADB81EC217ADE800094E4B8 /* Assets.xcassets in Resources */,
 				5ADB81EA217ADE7D0094E4B8 /* Main.storyboard in Resources */,
@@ -439,8 +468,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ADB8235217B9C8C0094E4B8 /* ReportVC.swift in Sources */,
 				5ADB81E7217ADE7D0094E4B8 /* ViewController.swift in Sources */,
+				5ADB8233217B9C760094E4B8 /* MapVC.swift in Sources */,
 				5ADB8227217B0DB80094E4B8 /* Colors.swift in Sources */,
+				5ADB8237217B9C940094E4B8 /* ProfileVC.swift in Sources */,
+				5ADB8241217BD6350094E4B8 /* SWRevealViewController.m in Sources */,
 				5ADB822B217B4F0F0094E4B8 /* UserData.swift in Sources */,
 				5ADB822F217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */,
 				5ADB81E5217ADE7D0094E4B8 /* AppDelegate.swift in Sources */,
@@ -453,6 +486,7 @@
 			files = (
 				5ADB822C217B4F0F0094E4B8 /* UserData.swift in Sources */,
 				5ADB81FA217ADE800094E4B8 /* DangerPopTests.swift in Sources */,
+				5ADB8242217BD6350094E4B8 /* SWRevealViewController.m in Sources */,
 				5ADB8230217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */,
 				5ADB8228217B0DB80094E4B8 /* Colors.swift in Sources */,
 			);
@@ -464,6 +498,7 @@
 			files = (
 				5ADB822D217B4F0F0094E4B8 /* UserData.swift in Sources */,
 				5ADB8205217ADE800094E4B8 /* DangerPopUITests.swift in Sources */,
+				5ADB8243217BD6350094E4B8 /* SWRevealViewController.m in Sources */,
 				5ADB8231217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */,
 				5ADB8229217B0DB80094E4B8 /* Colors.swift in Sources */,
 			);
@@ -625,6 +660,7 @@
 			baseConfigurationReference = C3F60F77A623CF1FFA27787F /* Pods-DangerPop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DangerPop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -633,6 +669,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.DangerPros.DangerPop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DangerPop/DangerPop-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -643,6 +681,7 @@
 			baseConfigurationReference = 228FD3352DB555E5441C7701 /* Pods-DangerPop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DangerPop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -651,6 +690,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.DangerPros.DangerPop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DangerPop/DangerPop-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -662,6 +702,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DangerPopTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -671,6 +712,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.DangerPros.DangerPopTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DangerPop/DangerPopTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DangerPop.app/DangerPop";
@@ -683,6 +726,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DangerPopTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -692,6 +736,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.DangerPros.DangerPopTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DangerPop/DangerPopTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DangerPop.app/DangerPop";
@@ -703,6 +748,7 @@
 			baseConfigurationReference = 2124217BC46C80A8818F6829 /* Pods-DangerPopUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DangerPopUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -712,6 +758,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.DangerPros.DangerPopUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DangerPop/DangerPopUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DangerPop;
@@ -723,6 +771,7 @@
 			baseConfigurationReference = A7CC69D551064E17F7056D66 /* Pods-DangerPopUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DangerPopUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -732,6 +781,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.DangerPros.DangerPopUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DangerPop/DangerPopUITests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DangerPop;

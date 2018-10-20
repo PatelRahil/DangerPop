@@ -20,17 +20,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="TWs-ss-VNZ" kind="show" identifier="LoginSegue" id="fMC-Yb-533"/>
+                        <segue destination="TWs-ss-VNZ" kind="show" identifier="MapSegue" id="fMC-Yb-533"/>
                         <segue destination="EdV-SK-cYV" kind="show" identifier="CreateAccountSegue" id="xf8-aq-DTT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="49" y="105"/>
         </scene>
         <!--Create AccountVC-->
         <scene sceneID="SQw-FM-nci">
             <objects>
-                <viewController id="EdV-SK-cYV" customClass="CreateAccountVC" sceneMemberID="viewController">
+                <viewController id="EdV-SK-cYV" customClass="CreateAccountVC" customModule="DangerPop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xiV-fw-OiJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +46,7 @@
         <!--MapVC-->
         <scene sceneID="rlH-Bi-mEQ">
             <objects>
-                <viewController id="TWs-ss-VNZ" customClass="MapVC" sceneMemberID="viewController">
+                <viewController id="TWs-ss-VNZ" customClass="MapVC" customModule="DangerPop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="osc-aO-qb7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +65,7 @@
         <!--ProfileVC-->
         <scene sceneID="sDS-KW-P2W">
             <objects>
-                <viewController id="2RC-PY-Lt2" customClass="ProfileVC" sceneMemberID="viewController">
+                <viewController id="2RC-PY-Lt2" customClass="ProfileVC" customModule="DangerPop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFG-7H-zUw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +80,7 @@
         <!--ReportVC-->
         <scene sceneID="iYN-61-OWB">
             <objects>
-                <viewController id="Taj-zW-90n" customClass="ReportVC" sceneMemberID="viewController">
+                <viewController id="Taj-zW-90n" customClass="ReportVC" customModule="DangerPop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CZL-A1-nmA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
