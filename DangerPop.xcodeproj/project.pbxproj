@@ -22,6 +22,12 @@
 		5ADB8227217B0DB80094E4B8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8226217B0DB80094E4B8 /* Colors.swift */; };
 		5ADB8228217B0DB80094E4B8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8226217B0DB80094E4B8 /* Colors.swift */; };
 		5ADB8229217B0DB80094E4B8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB8226217B0DB80094E4B8 /* Colors.swift */; };
+		5ADB822B217B4F0F0094E4B8 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB822A217B4F0F0094E4B8 /* UserData.swift */; };
+		5ADB822C217B4F0F0094E4B8 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB822A217B4F0F0094E4B8 /* UserData.swift */; };
+		5ADB822D217B4F0F0094E4B8 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB822A217B4F0F0094E4B8 /* UserData.swift */; };
+		5ADB822F217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB822E217B58ED0094E4B8 /* CreateAccountVC.swift */; };
+		5ADB8230217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB822E217B58ED0094E4B8 /* CreateAccountVC.swift */; };
+		5ADB8231217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB822E217B58ED0094E4B8 /* CreateAccountVC.swift */; };
 		7EDB36184DC1339253C652F8 /* Pods_DangerPop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8342E919C3922104B40F9BEB /* Pods_DangerPop.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +67,8 @@
 		5ADB8206217ADE800094E4B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ADB8222217B004C0094E4B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5ADB8226217B0DB80094E4B8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5ADB822A217B4F0F0094E4B8 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		5ADB822E217B58ED0094E4B8 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		8342E919C3922104B40F9BEB /* Pods_DangerPop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DangerPop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7CC69D551064E17F7056D66 /* Pods-DangerPopUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DangerPopUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DangerPopUITests/Pods-DangerPopUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C3F60F77A623CF1FFA27787F /* Pods-DangerPop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DangerPop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DangerPop/Pods-DangerPop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +145,8 @@
 			children = (
 				5ADB81E4217ADE7D0094E4B8 /* AppDelegate.swift */,
 				5ADB81E6217ADE7D0094E4B8 /* ViewController.swift */,
+				5ADB822A217B4F0F0094E4B8 /* UserData.swift */,
+				5ADB822E217B58ED0094E4B8 /* CreateAccountVC.swift */,
 				5ADB8226217B0DB80094E4B8 /* Colors.swift */,
 				5ADB81E8217ADE7D0094E4B8 /* Main.storyboard */,
 				5ADB81EB217ADE800094E4B8 /* Assets.xcassets */,
@@ -431,6 +441,8 @@
 			files = (
 				5ADB81E7217ADE7D0094E4B8 /* ViewController.swift in Sources */,
 				5ADB8227217B0DB80094E4B8 /* Colors.swift in Sources */,
+				5ADB822B217B4F0F0094E4B8 /* UserData.swift in Sources */,
+				5ADB822F217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */,
 				5ADB81E5217ADE7D0094E4B8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,7 +451,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ADB822C217B4F0F0094E4B8 /* UserData.swift in Sources */,
 				5ADB81FA217ADE800094E4B8 /* DangerPopTests.swift in Sources */,
+				5ADB8230217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */,
 				5ADB8228217B0DB80094E4B8 /* Colors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,7 +462,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ADB822D217B4F0F0094E4B8 /* UserData.swift in Sources */,
 				5ADB8205217ADE800094E4B8 /* DangerPopUITests.swift in Sources */,
+				5ADB8231217B58ED0094E4B8 /* CreateAccountVC.swift in Sources */,
 				5ADB8229217B0DB80094E4B8 /* Colors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

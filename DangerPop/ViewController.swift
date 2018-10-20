@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 extension UIButton {
     func leftImage(image: UIImage, renderMode: UIImage.RenderingMode) {
         self.setImage(image.withRenderingMode(renderMode), for: .normal)
@@ -39,8 +40,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    
-    func setupUI() {
+    // Convenience functions
+    private func setupUI() {
         let viewSize = view.frame.size
         let underline = CALayer()
         let underline2 = CALayer()
@@ -81,6 +82,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         loginBtn.setTitleColor(.white, for: .normal)
         loginBtn.backgroundColor = Colors.orange
         loginBtn.layer.cornerRadius = 4
+        loginBtn.addTarget(self, action: #selector(loginPressed(sender:)), for: .touchUpInside)
+        loginBtn.addTarget(self, action: #selector(darkenButton(sender:)), for: .touchDown)
         
         //separator.borderColor = Colors.orange.cgColor
         separator.backgroundColor = Colors.orange
@@ -95,12 +98,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         googleBtn.subviews.first?.contentMode = .scaleAspectFit
         googleBtn.backgroundColor = UIColor.white
         googleBtn.layer.cornerRadius = 4
+        googleBtn.addTarget(self, action: #selector(googleSignInPressed(sender:)), for: .touchUpInside)
+        googleBtn.addTarget(self, action: #selector(darkenButton(sender:)), for: .touchDown)
         
         createAccountBtn.frame = CGRect(x: (viewSize.width - btnWidth) / 2, y: googleBtn.frame.maxY + 20, width: btnWidth, height: 40)
         createAccountBtn.backgroundColor = Colors.orange
         createAccountBtn.setTitle("Create an account", for: .normal)
         createAccountBtn.setTitleColor(.white, for: .normal)
         createAccountBtn.layer.cornerRadius = 4
+        createAccountBtn.addTarget(self, action: #selector(createAccountPressed(sender:)), for: .touchUpInside)
+        createAccountBtn.addTarget(self, action: #selector(darkenButton(sender:)), for: .touchDown)
         
         view.addSubview(emailFld)
         view.addSubview(passFld)
@@ -110,6 +117,58 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(createAccountBtn)
     }
     
+    private func presentAlert(alert: String, message: String) {
+        let alertController = UIAlertController(title: alert, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func loadUser() {
+        if let uid = FIRAuth.auth()?.currentUser?.uid {
+            let ref = FIRDatabase.database().reference(withPath: "Users/\(uid)")
+            ref.observeSingleEvent(of: .value) { (snapshot) in
+                if snapshot.exists() {
+                    UserData.uid = uid
+                    UserData.update(with: snapshot)
+                } else {
+                    self.presentAlert(alert: "This account doesn't exist", message: "Please contact support at support@savetheirsouls.org")
+                }
+            }
+        }
+    }
+    
+    // button actions
+    @objc func darkenButton(sender:Any) {
+        if let btn = sender as? UIButton {
+            btn.backgroundColor = btn.backgroundColor?.darker()
+        }
+    }
+    
+    @objc func loginPressed(sender:UIButton) {
+        if let email = emailFld.text, let pass = passFld.text {
+            FIRAuth.auth()?.signIn(withEmail: email, password: pass) { (user, error) in
+                if error == nil {
+                    //Valid Email and Password
+                    self.loadUser()
+                } else {
+                    print(error!.localizedDescription)
+                    self.presentAlert(alert: "Invalid Login Credentials", message: "")
+                }
+            }
+        }
+        
+        sender.backgroundColor = sender.backgroundColor?.lighter(by: 22)
+    }
+    
+    @objc func googleSignInPressed(sender:UIButton) {
+        sender.backgroundColor = sender.backgroundColor?.lighter(by: 22)
+    }
+    
+    @objc func createAccountPressed(sender:UIButton) {
+        sender.backgroundColor = sender.backgroundColor?.lighter(by: 22)
+    }
+    
+    // textfield delegate functions
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.placeholder = nil
     }
