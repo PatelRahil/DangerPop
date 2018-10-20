@@ -7,6 +7,11 @@ target 'DangerPop' do
 
   # Pods for DangerPop
 
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'GoogleMaps'
+
   target 'DangerPopTests' do
     inherit! :search_paths
     # Pods for testing
