@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate
     let separator = UIView()
     let googleBtn = GIDSignInButton()
     let createAccountBtn = UIButton()
+    let imgView = UIImageView(image: UIImage(named: "dangerpop"))
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -42,6 +43,9 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate
         emailFld.textColor = UIColor.white
         emailFld.textAlignment = .center
         emailFld.tag = 0;
+        
+        imgView.frame = CGRect(x: 0, y: 0, width: viewSize.width, height: emailFld.frame.minY)
+
         
         passFld.frame = CGRect(origin: CGPoint(x: emailFld.frame.minX, y: emailFld.frame.maxY + 40), size: CGSize(width: emailFld.frame.size.width, height: 25))
         passFld.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
@@ -103,6 +107,7 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate
         view.addSubview(separator)
         view.addSubview(googleBtn)
         view.addSubview(createAccountBtn)
+        view.addSubview(imgView)
     }
     
     private func presentAlert(alert: String, message: String) {

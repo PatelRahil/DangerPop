@@ -90,7 +90,7 @@ class ReportVC: UIViewController, UITextFieldDelegate {
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         //Set the drop down menu's options
-        button.dropView.dropDownOptions = ["Robbery", "Fire", "Ghost"]
+        button.dropView.dropDownOptions = ["Crime", "Accidents", "Natural Cause"]
     }
     
     private func presentAlert(alert: String, message: String) {
