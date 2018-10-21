@@ -52,6 +52,8 @@ class ReportVC: UIViewController, UITextFieldDelegate {
         reportBtn.layer.cornerRadius = 4
         reportBtn.addTarget(self, action: #selector(reportPressed(sender:)), for: .touchUpInside)
         reportBtn.addTarget(self, action: #selector(darkenButton(sender:)), for: .touchDown)
+        reportBtn.addTarget(self, action: #selector(lightenButton(sender:)), for: .touchUpOutside)
+
         
         //separator.borderColor = Colors.orange.cgColor
         separator.backgroundColor = Colors.orange
@@ -60,8 +62,12 @@ class ReportVC: UIViewController, UITextFieldDelegate {
         let btnWidth = CGFloat(170)
         back.frame = CGRect(x: (viewSize.width - btnWidth) / 2, y: separator.frame.maxY + 20, width: btnWidth, height: 40)
         back.setTitle("Go Back", for: .normal)
-        back.backgroundColor = UIColor(displayP3Red: 240, green: 240, blue: 240, alpha: 1)
-        back.setTitleColor(UIColor(displayP3Red: 5, green: 5, blue: 5, alpha: 1), for: .normal)
+        back.backgroundColor = Colors.burntRed
+        back.setTitleColor(UIColor.white, for: .normal)
+        back.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        back.addTarget(self, action: #selector(darkenButton(sender:)), for: .touchDown)
+        back.addTarget(self, action: #selector(lightenButton(sender:)), for: .touchUpOutside)
+        back.layer.cornerRadius = 4
         
         view.addSubview(descriptionFld)
         view.addSubview(reportBtn)
@@ -70,8 +76,9 @@ class ReportVC: UIViewController, UITextFieldDelegate {
         
         //Configure the button
         button = dropDownBtn.init(frame: CGRect(x: 0, y: viewSize.height / 6, width: 0, height: 0))
-        button.setTitle("Danger Type", for: .normal)
+        button.setTitle("Type", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 4
         
         //Add Button to the View Controller
         self.view.addSubview(button)
@@ -99,30 +106,17 @@ class ReportVC: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @objc func lightenButton(sender:Any) {
+        if let btn = sender as? UIButton {
+            btn.backgroundColor = btn.backgroundColor?.lighter()
+        }
+    }
+    
+    @objc func goBack() {
+        performSegue(withIdentifier: "BackFromReportSegue", sender: nil)
+    }
+    
     @objc func reportPressed(sender:UIButton) {
-        /*
-         if descriptionFld.text != nil {
-         let id = // Generate Threat ID
-         let ref = Database.database().reference(fromURL: "Input database reference Here")
-         let usersReference = ref.child("Threats").child(id)
-         
-         let current_date_time = Date()
-         
-         let lat_value = // Get Lat
-         let long_value = // Get Long
-         let location_dictionary = [lat: lat_value, long: long_value]
-         
-         let values = [type: button.getText(), location: location_dictionary, descriptionFld.text!, time: current_date_time]
-         usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-         if err != nil {
-         print("THERE WAS AN ERROR")
-         return
-         }
-         
-         self.dismiss(animated: true, completion: nil)
-         })
-         }
-         */
         let latBound = Int(coords.latitude)
         let longBound = Int(coords.longitude)
         let loc = "\(latBound),\(longBound)"
