@@ -12,12 +12,11 @@ import UIKit
 class SlideTableVC: UITableViewController {
     
     @IBOutlet var slideTableView: UITableView!
-    var tableArray = ["", "Profile", "Map"]
+    var tableArray = ["", "Profile", "Map", "Donate"]
     //@IBOutlet var sideTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\n\n\nHEY3\n\n\n")
         if let name = UserData.name {
             tableArray[0] = name
         }
@@ -28,7 +27,6 @@ class SlideTableVC: UITableViewController {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        print("\n\n\nHEY2\n\n\n")
         if let name = UserData.name {
             tableArray[0] = name
         }
@@ -44,21 +42,21 @@ class SlideTableVC: UITableViewController {
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTemplate") as! customTitleTableViewCell
-            cell.lbl.text = tableArray[0]
+            cell.lbl.text = tableArray[indexPath.row]
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicTemplate") as! customTableViewCell
             cell.lbl.text = tableArray[indexPath.row]
             return cell
-        } else {
+        } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell") as! customTableViewCell
             cell.lbl.text = tableArray[indexPath.row]
             return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DonateCell") as! customTableViewCell
+            cell.lbl.text = tableArray[indexPath.row]
+            return cell
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.backgroundColor = Colors.black
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,6 +69,14 @@ class SlideTableVC: UITableViewController {
             performSegue(withIdentifier: "ProfileSegue", sender: nil)
         } else if cell!.reuseIdentifier == "MapCell" {
             performSegue(withIdentifier: "BackToMapSegue", sender: nil)
+        } else if cell!.reuseIdentifier == "DonateCell" {
+            print("Donate cell tapped")
+            if let url = URL(string: "https://savetheirsouls.org") {
+                UIApplication.shared.open(url, options: [:]) {_ in }
+            } else {
+                print("not a url")
+            }
+            tableView.reloadData()
         }
     }
 
