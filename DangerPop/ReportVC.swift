@@ -134,8 +134,12 @@ class ReportVC: UIViewController, UITextFieldDelegate {
             presentAlert(alert: "No description", message: "Please fill out a description.")
             return
         }
+        guard let uid = UserData.uid else {
+            presentAlert(alert: "There has been an error", message: "Sign out, and sign back in.")
+            return
+        }
         let locData:[String:String] = ["lat":"\(coords.latitude)", "long":"\(coords.longitude)"]
-        let data:[String:String] = ["type":button.getText(), "description": desc]
+        let data:[String:String] = ["type":button.getText(), "description": desc, "creator": uid]
         ref.setValue(data)
         ref.child("location").setValue(locData)
         performSegue(withIdentifier: "BackFromReportSegue", sender: nil)
