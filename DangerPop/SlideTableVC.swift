@@ -26,7 +26,7 @@ class SlideTableVC: UITableViewController {
         slideTableView.reloadData()
     }
     
-    /*
+    
     override func viewDidAppear(_ animated: Bool) {
         print("\n\n\nHEY2\n\n\n")
         if let name = UserData.name {
@@ -34,7 +34,7 @@ class SlideTableVC: UITableViewController {
         }
         slideTableView.reloadData()
     }
- */
+ 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableArray.count
