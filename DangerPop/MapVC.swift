@@ -26,6 +26,7 @@ class MapVC: UIViewController {
             mapView.isMyLocationEnabled = true
             mapView.settings.myLocationButton = true
             view = mapView
+            //mapView.camera = GMSCameraPosition(target: mapView.myLocation!.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         }
         layoutUI(viewSize: viewSize)
         
@@ -33,6 +34,7 @@ class MapVC: UIViewController {
         for gesture in mapView.gestureRecognizers! {
             mapView.removeGestureRecognizer(gesture)
         }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,7 +53,6 @@ class MapVC: UIViewController {
     
     private func layoutUI(viewSize: CGSize) {
         let size = viewSize
-        print("\n\n\n + \(size) + \n\n\n")
         self.revealViewController()?.rearViewRevealWidth = 280
         slideMenu.setImage(UIImage(named: "SlideMenuIcon"), for: .normal)
         slideMenu.frame = CGRect(x: 10, y: 40, width: size.width / 12, height: size.width / 12)
@@ -67,11 +68,17 @@ extension MapVC: GMSMapViewDelegate {
 }
 
 extension MapVC: CLLocationManagerDelegate {
-    private func locationManager1(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             
             locMan.startUpdatingLocation()
-            
+            guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+            mapView.animate(to:GMSCameraPosition(target: locValue, zoom: 15, bearing: 0, viewingAngle: 0))
         }
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("\n\n\nUPDATING LOCATION\n\n\n")
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        mapView.animate(to:GMSCameraPosition(target: locValue, zoom: 15, bearing: 0, viewingAngle: 0))
     }
 }
