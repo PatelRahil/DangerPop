@@ -161,6 +161,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JcQ-uo-2R2"/>
                     </view>
+                    <connections>
+                        <segue destination="Rnx-XT-MPC" kind="show" identifier="BackFromReportSegue" id="1Ke-Cb-DIf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QsB-dC-eVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,6 +171,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gwN-83-ssn"/>
+        <segue reference="1Ke-Cb-DIf"/>
     </inferredMetricsTieBreakers>
 </document>
