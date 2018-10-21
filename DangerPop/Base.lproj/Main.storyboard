@@ -59,6 +59,7 @@
                     </view>
                     <connections>
                         <segue destination="Rnx-XT-MPC" kind="show" id="1R3-qw-8xB"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="BackToLoginSegue" id="ie0-wM-f0F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayu-AF-v2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -179,6 +180,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gwN-83-ssn"/>
+        <segue reference="1R3-qw-8xB"/>
     </inferredMetricsTieBreakers>
 </document>

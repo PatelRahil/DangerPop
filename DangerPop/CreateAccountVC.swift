@@ -100,8 +100,10 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         let btnWidth = CGFloat(170)
         back.frame = CGRect(x: (viewSize.width - btnWidth) / 2, y: separator.frame.maxY + 20, width: btnWidth, height: 40)
         back.setTitle("Go Back", for: .normal)
-        back.backgroundColor = UIColor(displayP3Red: 240, green: 240, blue: 240, alpha: 1)
-        back.setTitleColor(UIColor(displayP3Red: 5, green: 5, blue: 5, alpha: 1), for: .normal)
+        back.backgroundColor = Colors.burntRed
+        back.setTitleColor(UIColor.white, for: .normal)
+        back.layer.cornerRadius = 4
+        back.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         
         view.addSubview(nameFld)
         view.addSubview(addressFld)
@@ -123,6 +125,10 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         if let btn = sender as? UIButton {
             btn.backgroundColor = btn.backgroundColor?.darker()
         }
+    }
+    
+    @objc func goBack() {
+        performSegue(withIdentifier: "BackToLoginSegue", sender: nil)
     }
     
     @objc func createPressed(sender:UIButton) {
