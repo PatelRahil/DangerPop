@@ -15,19 +15,29 @@ class ProfileVC: UIViewController {
     let adFld = UITextField()
     let slideMenu = UIButton()
     let logoutBtn = UIButton()
+    let my_view : UIView = {
+        let v = UIView();
+        v.backgroundColor = UIColor.black
+        //v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutUI()
+        self.TwoColorAnimateBackground()
     }
     
     private func layoutUI() {
-        let size = view.frame.size
         guard let name = UserData.name else { return }
         let address = UserData.address
         let underline = CALayer()
         let underline2 = CALayer()
         let width = CGFloat(2.0)
         
+        my_view.frame = CGRect(x: 10, y: 10, width: view.frame.size.width - 20, height: view.frame.size.height - 20)
+        my_view.layer.cornerRadius = 30
+        let size = my_view.frame.size
+
         view.backgroundColor = Colors.black
         
         slideMenu.setImage(UIImage(named: "SlideMenuIcon"), for: .normal)
@@ -57,6 +67,9 @@ class ProfileVC: UIViewController {
         logoutBtn.backgroundColor = Colors.orange
         logoutBtn.setTitle("Logout", for: .normal)
         logoutBtn.layer.cornerRadius = 5
+        logoutBtn.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        logoutBtn.addTarget(self, action: #selector(darkenButton(sender:)), for: .touchDown)
+        logoutBtn.addTarget(self, action: #selector(lightenButton(sender:)), for: .touchUpOutside)
         
         // textfield underline
         underline.borderColor = Colors.orange.cgColor
@@ -71,10 +84,24 @@ class ProfileVC: UIViewController {
         adFld.layer.addSublayer(underline2)
         adFld.layer.masksToBounds = true
         
-        view.addSubview(slideMenu)
-        view.addSubview(nameFld)
-        view.addSubview(adFld)
-        view.addSubview(logoutBtn)
+        my_view.addSubview(slideMenu)
+        my_view.addSubview(nameFld)
+        my_view.addSubview(adFld)
+        my_view.addSubview(logoutBtn)
+        
+        view.addSubview(my_view)
+    }
+    
+    @objc func darkenButton(sender:Any) {
+        if let btn = sender as? UIButton {
+            btn.backgroundColor = btn.backgroundColor?.darker()
+        }
+    }
+    
+    @objc func lightenButton(sender:Any) {
+        if let btn = sender as? UIButton {
+            btn.backgroundColor = btn.backgroundColor?.lighter()
+        }
     }
     
     @objc func logout() {
@@ -90,7 +117,22 @@ class ProfileVC: UIViewController {
             }
         }
     }
+    
+    func TwoColorAnimateBackground() {
+        UIView.animate(withDuration: 1, animations: {
+            self.view.backgroundColor = UIColor.init(red: 5/255, green: 5/255, blue: 5/255, alpha: 1.0)
+        }, completion: {
+            (completed : Bool) -> Void in
+            UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {
+                self.view.backgroundColor = UIColor.init(red: 255/255, green: 140/255, blue: 0/255, alpha: 1.0)
+            }, completion: {
+                (completed : Bool) -> Void in
+                self.TwoColorAnimateBackground()
+            })
+        })
+    }
 }
+
 extension ProfileVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("\n\n\nTEXT FIELD ENDED EDITING\n\n\n")
