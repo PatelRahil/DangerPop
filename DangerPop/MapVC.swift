@@ -25,6 +25,8 @@ class MapVC: UIViewController, SFSpeechRecognizerDelegate {
     
     var currentCoords = CLLocationCoordinate2D()
     
+    let sound = Sound()
+    
     // speech recognition
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
     
@@ -145,7 +147,7 @@ class MapVC: UIViewController, SFSpeechRecognizerDelegate {
         //view.addSubview(fieldView)
         view.addSubview(micBtn)
         view.addSubview(textLbl)
-        view.addSubview(nearbyThreatsBtn)
+        //view.addSubview(nearbyThreatsBtn)
     }
     
     @objc private func reportThreat() {
@@ -154,6 +156,7 @@ class MapVC: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     @objc private func checkThreats() {
+        print("\n\n\nCHECKING THREATS\n\n\n")
         mapView.clear()
         getNearbyThreats(location: currentCoords)
     }
@@ -191,7 +194,9 @@ class MapVC: UIViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             micBtn.isEnabled = false
+            let translatedTxt = textLbl.text
             textLbl.text = ""
+            handleSpeechTxt(str: translatedTxt!)
         } else {
             startRecording()
         }
@@ -202,6 +207,8 @@ class MapVC: UIViewController, SFSpeechRecognizerDelegate {
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
+        }else{
+            sound.play(type: "ding")
         }
         
         let audioSession = AVAudioSession.sharedInstance()
@@ -277,7 +284,6 @@ class MapVC: UIViewController, SFSpeechRecognizerDelegate {
             for tid in tids! {
                 ref = FIRDatabase.database().reference(withPath: "/Threats/\(threatBlock)/\(tid)")
                 ref.observeSingleEvent(of: .value, with: { (snap) in
-                    print("\n\n\n\(snap)\n\n\n\(Threat(snapshot: snap))")
                     let threat = Threat(snapshot: snap)
                     self.placePin(for: threat)
                 }, withCancel: { (error) in
@@ -289,7 +295,7 @@ class MapVC: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
-    func placePin(for threat: Threat) {
+    private func placePin(for threat: Threat) {
         let marker = GMSMarker(position: threat.getCoords())
         print(threat.getCoords())
         marker.userData = threat.tid
@@ -297,6 +303,7 @@ class MapVC: UIViewController, SFSpeechRecognizerDelegate {
         marker.snippet = threat.description
         marker.map = mapView
         marker.appearAnimation = kGMSMarkerAnimationPop
+        sound.play(type: "pop")
         print(marker.position)
         
         switch threat.type {
@@ -312,6 +319,45 @@ class MapVC: UIViewController, SFSpeechRecognizerDelegate {
             marker.icon = GMSMarker.markerImage(with: .red)
         }
         
+    }
+    
+    private func handleSpeechTxt(str: String) {
+        switch str {
+        case "Is there anything near me":
+            checkThreats()
+            return
+        case "Are there threats near me":
+            checkThreats()
+            return
+        case "Are there any threats near me":
+            checkThreats()
+            return
+        case "Is there anything in my area":
+            checkThreats()
+            return
+        case "Are there threats in my area":
+            checkThreats()
+            return
+        case "Are there any threats in my area":
+            checkThreats()
+            return
+        case "I want to donate":
+            if let url = URL(string: "https://savetheirsouls.org") {
+                UIApplication.shared.open(url, options: [:]) {_ in }
+            } else {
+                print("not a url")
+            }
+            return
+        case "donate":
+            if let url = URL(string: "https://savetheirsouls.org") {
+                UIApplication.shared.open(url, options: [:]) {_ in }
+            } else {
+                print("not a url")
+            }
+            return
+        default:
+            return
+        }
     }
 }
 
